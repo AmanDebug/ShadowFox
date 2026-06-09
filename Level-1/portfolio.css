@@ -1,0 +1,513 @@
+/* --- Divine-Tech Theme Variables --- */
+:root {
+    --bg-deep: #030613;
+    --bg-mid: #0a1128;
+    --text-main: #e0e6ed;
+    --gold-primary: #cfb53b;
+    --gold-glow: rgba(207, 181, 59, 0.6);
+    --cyan-primary: #00e5ff;
+    --cyan-glow: rgba(0, 229, 255, 0.5);
+    --ancient-script: 'Courier New', Courier, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* --- Cosmic Background Effect --- */
+.stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(207, 181, 59, 0.05), transparent 25%);
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* --- Faint Orbiting Planets --- */
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.03);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.orbit-1 { width: 1200px; height: 1200px; animation: orbit-spin 90s linear infinite; }
+.orbit-2 { width: 1800px; height: 1800px; animation: orbit-spin 150s linear infinite reverse; }
+.orbit-3 { width: 2400px; height: 2400px; animation: orbit-spin 200s linear infinite; }
+
+.planet {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.p-1 { width: 6px; height: 6px; background: var(--cyan-primary); box-shadow: 0 0 15px var(--cyan-glow); }
+.p-2 { width: 4px; height: 4px; background: var(--gold-primary); box-shadow: 0 0 10px var(--gold-glow); }
+.p-3 { width: 8px; height: 8px; background: #ffffff; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+@keyframes orbit-spin {
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold-primary); border-radius: 4px; }
+
+/* --- Scroll Animation Classes --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Sections Setup --- */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 40px;
+    color: var(--gold-primary);
+    font-size: 1rem;
+    animation: bounce 2s infinite;
+    text-decoration: none;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: var(--ancient-script);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); text-shadow: 0 0 10px var(--gold-glow); }
+    60% { transform: translateY(-7px); }
+}
+
+/* --- Section 1: Hero --- */
+#hero h1 {
+    font-size: 6rem;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--gold-primary);
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    text-shadow: 0 0 30px var(--gold-glow);
+    position: relative;
+}
+#hero h1::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--gold-primary);
+    opacity: 0.1;
+    filter: blur(15px);
+}
+
+/* --- Section 2: About --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1000px;
+    background: rgba(10, 17, 40, 0.6);
+    padding: 3rem;
+    border-radius: 5px;
+    border: 1px solid rgba(207, 181, 59, 0.3);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 229, 255, 0.05);
+    position: relative;
+}
+.about-container::before, .about-container::after {
+    content: ''; position: absolute; width: 30px; height: 30px; border: 2px solid var(--cyan-primary);
+}
+.about-container::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.about-container::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.profile-wrapper {
+    position: relative;
+}
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--gold-primary);
+}
+.profile-wrapper::before {
+    content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border-radius: 50%; background: conic-gradient(from 0deg, var(--gold-glow), var(--cyan-glow), var(--gold-glow));
+    animation: spin 10s linear infinite;
+    z-index: 1;
+    filter: blur(10px);
+}
+
+.about-text h2 {
+    font-size: 3.5rem;
+    color: var(--cyan-primary);
+    margin-bottom: 1rem;
+    font-family: var(--ancient-script);
+    text-transform: uppercase;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #b0c4de;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* --- Section 3: Chakravyu Wheel --- */
+#wheel-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.chakravyu-wrapper {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Circulating Geometric Mandala --- */
+.mandala-base {
+    position: absolute; width: 100%; height: 100%; border-radius: 50%;
+    border: 1px solid rgba(207, 181, 59, 0.2);
+    box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05);
+    animation: spin 45s linear infinite;
+}
+.mandala-layer-1 {
+    position: absolute; width: 85%; height: 85%; border: 1px dashed var(--cyan-primary);
+    animation: spin 25s linear infinite reverse; border-radius: 50%; opacity: 0.6;
+}
+.mandala-layer-2 {
+    position: absolute; width: 70%; height: 70%; border: 2px solid var(--gold-primary);
+    animation: pulse-spin 20s ease-in-out infinite alternate;
+    opacity: 0.4;
+}
+.mandala-layer-3 {
+    position: absolute; width: 70%; height: 70%; border: 2px solid var(--gold-primary);
+    animation: pulse-spin-reverse 30s ease-in-out infinite alternate;
+    opacity: 0.4;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+@keyframes pulse-spin {
+    0% { transform: rotate(0deg) scale(0.95); box-shadow: 0 0 0 transparent; }
+    100% { transform: rotate(180deg) scale(1.05); box-shadow: inset 0 0 20px var(--gold-glow), 0 0 20px var(--gold-glow); }
+}
+
+@keyframes pulse-spin-reverse {
+    0% { transform: rotate(45deg) scale(1.05); box-shadow: inset 0 0 20px var(--cyan-glow); }
+    100% { transform: rotate(-135deg) scale(0.95); box-shadow: 0 0 0 transparent; }
+}
+
+.wheel-center {
+    font-size: 2.2rem;
+    font-family: var(--ancient-script);
+    color: var(--bg-deep);
+    background: var(--gold-primary);
+    padding: 20px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 30px var(--gold-glow);
+    z-index: 10;
+}
+
+/* Spokes positioning */
+.spoke-node {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: var(--bg-mid);
+    border: 2px solid var(--cyan-primary);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    z-index: 20;
+}
+
+.spoke-text {
+    transform: rotate(-45deg);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.spoke-node:hover {
+    background: var(--cyan-primary);
+    box-shadow: 0 0 40px var(--cyan-glow);
+    transform: rotate(45deg) scale(1.2);
+}
+.spoke-node:hover .spoke-text {
+    color: var(--bg-deep);
+}
+
+.node-1 { top: -20px; left: 50%; margin-left: -45px; } 
+.node-2 { top: 35%; right: -20px; margin-top: -45px; } 
+.node-3 { bottom: 30px; right: 15%; } 
+.node-4 { bottom: 30px; left: 15%; } 
+.node-5 { top: 35%; left: -20px; margin-top: -45px; } 
+
+/* Panel Settings */
+.info-panel {
+    width: 480px;
+    min-height: 400px;
+    background: rgba(10, 17, 40, 0.8);
+    border: 1px solid var(--gold-primary);
+    border-radius: 5px;
+    padding: 2.5rem;
+    opacity: 0.5;
+    transition: opacity 0.5s ease, box-shadow 0.5s ease;
+    backdrop-filter: blur(15px);
+    position: relative;
+}
+
+.info-panel::before {
+    content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px dashed rgba(207, 181, 59, 0.3); pointer-events: none;
+}
+
+.info-panel.active {
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(207, 181, 59, 0.15);
+}
+
+.info-title {
+    color: var(--cyan-primary);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gold-primary);
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-family: var(--ancient-script);
+    letter-spacing: 2px;
+}
+
+/* Icon List Styling */
+.info-content ul { 
+    list-style-type: none; 
+}
+
+.icon-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #d0dbe8;
+}
+
+.icon-list li i {
+    font-size: 1.8rem;
+    width: 30px;
+    text-align: center;
+}
+
+/* Specific icon colors if they don't have Devicon colored versions */
+.custom-cyan { color: var(--cyan-primary); }
+.custom-gold { color: var(--gold-primary); }
+
+.icon-list-detailed li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: #d0dbe8;
+    line-height: 1.5;
+}
+
+.icon-list-detailed li i {
+    font-size: 1.6rem;
+    color: var(--gold-primary);
+    margin-top: 2px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.connect-links { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+.connect-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem;
+    background: transparent;
+    color: var(--gold-primary);
+    text-decoration: none;
+    border: 1px solid var(--gold-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+.connect-links a i { font-size: 1.5rem; }
+.connect-links a:hover {
+    background: var(--gold-primary);
+    color: var(--bg-deep);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.default-msg {
+    color: rgba(224, 230, 237, 0.4);
+    font-style: italic;
+    text-align: center;
+    margin-top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--ancient-script);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* --- Section 4: Path of Mastery (Progress) --- */
+#progress {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Identical styling to the Rachyeta Hero heading */
+.divine-heading {
+    font-size: 4rem;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--gold-primary);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 0 0 30px var(--gold-glow);
+    position: relative;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.divine-heading::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 50%; top: 0;
+    transform: translateX(-50%);
+    color: var(--gold-primary);
+    opacity: 0.1;
+    filter: blur(15px);
+    white-space: nowrap;
+}
+
+.progress-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    width: 100%;
+}
+
+/* Individual boxed layout for each skill */
+.progress-box {
+    background: rgba(10, 17, 40, 0.8);
+    border: 1px solid var(--gold-primary);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05), 0 5px 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+/* Corner accents for the individual boxes */
+.progress-box::before, .progress-box::after {
+    content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--cyan-primary);
+}
+.progress-box::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.progress-box::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    overflow: visible; /* Must be visible so the hovering number isn't cut off */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%; /* Starts at 0 */
+    border-radius: 6px;
+    position: relative;
+    /* CSS transition handles the smooth bar growth */
+    transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* The number physically attaches to the right edge of the filling bar */
+.skill-percent {
+    position: absolute;
+    top: 25px; /* Moved from -30px to 25px so it hangs below the bar */
+    right: 0;
+    transform: translateX(50%); /* Centers the number perfectly over the tip of the bar */
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-family: var(--ancient-script);
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--cyan-glow);
+    opacity: 0; /* Hidden until it starts animating */
+    transition: opacity 0.3s ease;
+}
+
+.progress-fill.cyan-glow { background: var(--cyan-primary); box-shadow: 0 0 15px var(--cyan-primary); }
+.progress-fill.gold-glow { background: var(--gold-primary); box-shadow: 0 0 15px var(--gold-primary); }
+.progress-fill.gold-glow .skill-percent { text-shadow: 0 0 10px var(--gold-glow); }
