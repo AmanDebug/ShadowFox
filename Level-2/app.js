@@ -1,9 +1,7 @@
 // Function ensures the script runs only after everything is loaded
 window.addEventListener('DOMContentLoaded', (event) => {
     
-    // ==========================================
     // 1. HERO SLIDER LOGIC
-    // ==========================================
     const heroImages = [
         'hero_img.jpg',
         'hero-img2.jpg', // (cookware)
@@ -63,9 +61,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     startAutoSlide();
 
 
-    // ==========================================
+    
     // 2. NAVBAR LOGIN DIALOG LOGIC
-    // ==========================================
+
     const loginModal = document.getElementById('login-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
 
@@ -92,9 +90,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
 
-    // ==========================================
+    
     // 3. SIDE CART DRAWER LOGIC
-    // ==========================================
+
     const cartSection = document.querySelector('.cart-section');
     const cartDrawer = document.getElementById('cart-drawer');
     const drawerOverlay = document.getElementById('drawer-overlay');
@@ -124,9 +122,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
 
-    // ==========================================
+    
     // 4. TARGETED FOOTER LINKS LOGIC
-    // ==========================================
+    
     // This loops independently, so it works right from the page load!
     const targetedFooterLinks = document.querySelectorAll('.foot-panel2 ul:nth-child(3) a, .foot-panel2 ul:nth-child(4) a');
 
