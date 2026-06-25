@@ -312,7 +312,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Connects securely to your Node.js backend proxy
     async function fetchGeminiResponse(userPrompt) {
         // NOTE: Change this URL to your live URL (e.g., https://your-app.onrender.com/api/chat) once deployed!
-        const backendUrl = "http://localhost:3000/api/chat"; 
+        const backendUrl = "https://shadowfox-c198.onrender.com"; 
 
         try {
             const response = await fetch(backendUrl, {
