@@ -31,7 +31,13 @@
                 <select class="search-select" >
                     <option >All</option>
                 </select>
-                <input placeholder="Search Amazon.in" class=" search-input">
+                <div class="search-wrapper" style="width: 100%; position: relative;">
+                <input placeholder="Search Amazon.in" class=" search-input" id="main-search">
+
+                <div id="search-suggestions" class="suggestions-dropdown hidden">
+                </div>
+            </div>
+
                 <div class="search-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>    
                 </div>
@@ -80,29 +86,32 @@
 
 
          <!-- second sub header -->
-         <div class="panel ">
+        <div class="panel">
 
-            <div class="panel-all border">
-                <i class="fa-solid fa-bars"></i>
-                All
-            </div>
+    <div class="panel-all border">
+        <i class="fa-solid fa-bars"></i>
+        All
+    </div>
 
+    <div class="panel-ops">
+        <p class="border">Rufus</p>
+        <p class="border">Fresh</p>
+        <p class="border">Amazon Pay</p>
+        <p class="border">Flights</p>
+        <p class="border">Bestsellers</p>
+        <p class="border">MX Player</p>
+        <p class="border">Sell</p>
+    </div>
 
-            <div class="panel-ops">
-                <p class="border" >Rufus</p>
-                <p class="border">Fresh</p>
-                <p class="border">Amazon Pay</p>
-                <p class="border">Flights</p>
-                <p class="border">Bestsellers</p>
-                <p class="border">MX Player</p>
-                <p class="border">Sell</p>
-            </div>
+    <div class="deals-section border">
+        Shop Deals in Electronics
+    </div>
+     
+    <div id="dark-mode-toggle" class="border" style="padding: 5px 10px; cursor: pointer; font-weight: 700;">
+        <i class="fa-solid fa-moon"></i> Dark Mode
+    </div>
 
-
-            <div class="deals-section border">
-                Shop Deals in Electronics
-            </div>
-         </div>
+</div>
     </header>
 
     <div class="hero-section" id="hero-slider">
@@ -112,6 +121,35 @@
 
     <div class="shop-section">
 
+
+        <div class="box tracking-box">
+    <div class="box-content">
+        <h2>Live Delivery Status</h2>
+        
+        <div id="no-order-state" class="tracker-state">
+            <div class="empty-truck-icon">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+            </div>
+            <p class="tracker-msg">No upcoming deliveries scheduled.</p>
+            <p class="tracker-submsg">Explore your lists or cart to place a new order!</p>
+            <button id="shop-now-btn" class="tracker-btn">Shop Latest Deals</button>
+        </div>
+
+        <div id="active-order-state" class="tracker-state hidden">
+            <div class="item-summary">
+                <span class="item-title">Premium Wireless Headphones</span>
+                <span class="delivery-date">Arriving Tomorrow by 10 PM</span>
+            </div>
+            
+            <div class="progress-track">
+                <div class="step step-active"><i class="fa-solid fa-circle-check"></i><p>Ordered</p></div>
+                <div class="step step-active"><i class="fa-solid fa-truck-fast"></i><p>Shipped</p></div>
+                <div class="step"><i class="fa-solid fa-house-chimney-window"></i><p>Arriving</p></div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
         <div class="box1 box">
         
@@ -308,5 +346,36 @@
 
 <div id="drawer-overlay" class="drawer-overlay"></div>
 <script src="app.js"></script>
+
+
+<!-- ai section -->
+<div id="ai-chat-container">
+    <div id="chat-bubble" class="chat-bubble-btn">
+        <i class="fa-solid fa-robot"></i>
+        <span>Ask AI</span>
+    </div>
+
+    <div id="chat-window" class="chat-window-box hidden">
+        <div class="chat-header">
+            <div class="header-info">
+                <i class="fa-solid fa-brain"></i>
+                <h4>Amazon Shopping Assistant</h4>
+            </div>
+            <button id="close-chat-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div id="chat-messages" class="chat-messages-body">
+            <div class="message ai-message">
+                Hello User! I am your AI assistant. Ask me anything about our products, deals, or tracking!
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask about headphones, appliances...">
+            <button id="send-chat-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
