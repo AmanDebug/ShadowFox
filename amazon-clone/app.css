@@ -1,20 +1,20 @@
-/* Define theme colors */
+
 :root {
-    /* --- LIGHT MODE STATES (Standard Dark Amazon Headers) --- */
+    
     --navbar-bg: #0f1111;
     --navbar-text: #ffffff;
     
     --panel-bg: #232f3e;
     --panel-text: #ffffff;
     
-    --body-bg: #e2e7e6;       /* Whitish/Light Gray background */
-    --box-bg: #ffffff;        /* Whitish cards */
-    --box-text: #0f1111;      /* Black text colour */
+    --body-bg: #e2e7e6;       
+    --box-bg: #ffffff;        
+    --box-text: #0f1111;      
     
     --footer-bg: #232f3e;
     --footer-text: #ffffff;
 
-    /* Search bar starts standard */
+    
     --search-bg: #ffffff;
     --search-text: #0f1111;
 
@@ -22,48 +22,48 @@
 }
 
 [data-theme="dark"] {
-    /* --- PREMIUM DEEP OBSIDIAN ACTIVE STATE --- */
-    --navbar-bg: #0b0c0e;     /* Deep matte obsidian black */
-    --navbar-text: #e0e6ed;   /* Elegant soft-white text */
     
-    --panel-bg: #13171c;      /* Slightly lighter charcoal slate for the subheader */
-    --panel-text: #4fc3f7;    /* Premium electric cyan-blue for links and text */
+    --navbar-bg: #0b0c0e;     
+    --navbar-text: #e0e6ed;   
     
-    --body-bg: #090a0c;       /* True void black for the background spacer grid */
-    --box-bg: #171b21;        /* Sleek metallic gray-black card surfaces */
+    --panel-bg: #13171c;      
+    --panel-text: #4fc3f7;    
+    
+    --body-bg: #090a0c;       
+    --box-bg: #171b21;        
     --box-text: #ffffff;      
     
-    --footer-bg: #0b0c0e;     /* Footer matches the obsidian navbar */
-    --footer-text: #a0aec0;   /* Muted gray list links that light up on hover */
+    --footer-bg: #0b0c0e;     
+    --footer-text: #a0aec0;   
 
-    /* Search bar requirements inside Premium Dark Mode */
-    --search-bg: #1f242d;     /* Deep tech charcoal search input background */
+    
+    --search-bg: #1f242d;     
     --search-text: #ffffff;
     
     --search-divider: rgba(255, 255, 255, 0.803);
 }
 
-/* Update    shopping section and boxes to use these variables */
+/* Update your shopping section and boxes to use these variables */
 .shop-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color);   
     transition: background-color 0.3s ease;
 }
 
 .box {
     height: 400px;
     width: 23%;
-    background-color: var(--box-color); 
+    background-color: var(--box-color);   
     margin-top: 17px;
     padding: 20px 0px 15px;
-    color: var(--text-color);           
+    color: var(--text-color);             
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .box-content h2 {
-    color: var(--text-color);           
+    color: var(--text-color);          
 }
 
 /* dark mode codes end here*/
@@ -149,7 +149,7 @@
     border-top-left-radius: 3px;
     border: none;
     text-align: center;
-    padding: 0 10px; 
+    padding: 0 10px; /* Gives the text inside a little breathing room */
     
     /* --- THEME SYNC --- */
     background-color: var(--search-bg);   /* Dynamically turns dark charcoal in Dark Mode */
@@ -169,13 +169,13 @@
     width: 100%;
     font-size: 1rem;
     border: none;
-    background-color: var(--search-bg); 
-    color: var(--search-text);           
+    background-color: var(--search-bg);   
+    color: var(--search-text);             
     padding-left: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover style keeps custom orangish highlight border active */
+/* Hover style keeps your custom orangish highlight border active */
 .nav-search:hover {
     border: 4px solid rgb(254, 174, 0);
 }
@@ -190,7 +190,9 @@
 }
 
 
-/*  SPECIFIC DROPDOWN STYLES */
+/* ==========================================
+   UPDATED SPECIFIC DROPDOWN STYLES
+   ========================================== */
 
 .suggestions-dropdown {
     position: absolute;
@@ -209,11 +211,11 @@
 
 /* Sync surface colors perfectly when Premium Obsidian Mode is toggled on */
 [data-theme="dark"] .suggestions-dropdown {
-    background-color: var(--search-bg); 
+    background-color: var(--search-bg); /* Mirrors your dark search panel #1f242d */
     border: 1px solid #3a4250;
 }
 
-
+/* HIGHLY SPECIFIC ROADMAP: Forces text to be black in light mode */
 .navbar .search-wrapper #search-suggestions .suggestion-item {
     padding: 12px 15px;
     font-size: 0.95rem;
@@ -226,7 +228,7 @@
     color: #0f1111 !important; /* Wins the priority battle */
 }
 
-
+/* HIGHLY SPECIFIC ROADMAP: Forces text to be white in dark mode */
 [data-theme="dark"] .navbar .search-wrapper #search-suggestions .suggestion-item {
     color: #ffffff !important;
 }
@@ -313,8 +315,8 @@
 /* sub header */
 
 .panel {
-    background-color: var(--panel-bg);  
-    color: var(--panel-text);            
+    background-color: var(--panel-bg);    
+    color: var(--panel-text);              
     height: 40px;
     align-items: center;
     justify-content: space-evenly;
@@ -348,18 +350,18 @@
 .hero-section {
     background-image: url('hero_img.jpg');
     background-size: cover;
-    background-position: center top; /* Keeps the top of the image visible */
+    background-position: center top;
     height: 400px;
-    position: relative; /* This is CRITICAL for position: absolute to work on the buttons */
+    position: relative; 
     transition: background-image 0.5s ease-in-out;
 }
 
 /* Base style for both sliding buttons */
 .slide-btn {
-    position: absolute;   /* Detaches buttons from regular flow and locks them to the container */
+    position: absolute;   
     top: 0;               /* Spans from the very top... */
-    bottom: 0;            /* ...to the very bottom of the hero banner */
-    width: 80px;          /* Gives them a wide clickable area, just like Amazon */
+    bottom: 0;            
+    width: 80px;          
     background: transparent;
     border: none;
     color: white;
@@ -383,7 +385,7 @@
     right: 0;
 }
 
-/* Hover effects to match Amazon's look */
+
 .prev-btn:hover {
     opacity: 1;
     background: linear-gradient(to right, rgba(0,0,0,0.45), transparent);
@@ -400,7 +402,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background-color: var(--body-bg);   /*   */
+    background-color: var(--body-bg);     
     transition: background-color 0.3s;
 }
 
@@ -408,10 +410,10 @@
 .box {
     height: 400px;
     width: 23%;
-    background-color: var(--box-bg);     /*   */
+    background-color: var(--box-bg);       
     margin-top: 17px;
     padding: 20px 0px 15px;
-    color: var(--box-text);              /*   */
+    color: var(--box-text);                
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -424,7 +426,7 @@
 }
 
 .box-content h2 {
-    color: var(--box-text);              /* Kept relative to the card theme layout */
+    color: var(--box-text);              
 }
 
 .box-content {
@@ -437,7 +439,7 @@
 }
 
 
-/*DELIVERY TRACKER CUSTOM STYLES */
+
 .tracking-box .box-content {
     display: flex;
     flex-direction: column;
@@ -456,7 +458,7 @@
 
 .empty-truck-icon {
     font-size: 3rem;
-    color: var(--panel-text); /* Uses    elegant theme accent color */
+    color: var(--panel-text); 
     margin-bottom: 15px;
 }
 
@@ -472,7 +474,7 @@
     margin-bottom: 20px;
 }
 
-/* Elegant Amazon-style button template */
+
 .tracker-btn {
     background-color: #ffd814;
     border: none;
@@ -500,13 +502,12 @@
 }
 .delivery-date {
     display: block;
-    color: #007600; /* Amazon green */
+    color: #007600; 
     font-weight: 700;
     font-size: 1.1rem;
     margin-top: 5px;
 }
 
-/* The Progress Timeline Layout */
 .progress-track {
     display: flex;
     justify-content: space-between;
@@ -527,7 +528,7 @@
     margin-bottom: 5px;
 }
 .step-active {
-    color: #007600; /* Highlights step items in green */
+    color: #007600;
 }
 
 /* Hidden Utility Class */
@@ -618,6 +619,7 @@ ul p {
     transition: all 0.3s ease;
 }
 
+
 .last a {
     color: var(--footer-text);
 }
@@ -646,11 +648,11 @@ ul p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+    background-color: rgba(0, 0, 0, 0.6);
     display: none; 
     justify-content: center;
     align-items: center;
-    z-index: 1000; 
+    z-index: 1000; /* Sits completely on top of everything */
 }
 
 /* Modal Box Design */
@@ -718,7 +720,6 @@ ul p {
     background-color: #d8dade;
 }
 
-/* Class helper to reveal modal via JS */
 .modal-overlay.show {
     display: flex;
 }
@@ -750,8 +751,8 @@ ul p {
     flex-direction: column;
     
     /* Sliding Animation Logic */
-    transform: translateX(100%); /* Start completely off-screen to the right */
-    transition: transform 0.3s ease-in-out; /* Smooth transition glide */
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out; 
 }
 
 /* When this class is added via JS, the drawer slides in */
@@ -837,7 +838,7 @@ ul p {
 }
 
 
-/* FLOATING AI CHATBOT WIDGET STYLES */
+
 #ai-chat-container {
     position: fixed;
     bottom: 30px;
@@ -946,7 +947,7 @@ ul p {
     background-color: #007185; border: none; color: white; width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
 }
 
-/* SYNC WITH OBSIDIAN THEME MECHANICS */
+/* --- SYNC WITH YOUR OBSIDIAN THEME MECHANICS --- */
 [data-theme="dark"] .chat-window-box {
     background-color: #171b21;
     border: 1px solid #3a4250;
@@ -955,3 +956,57 @@ ul p {
 [data-theme="dark"] .ai-message { background-color: #1f242d; color: white; }
 [data-theme="dark"] .chat-input-area { background-color: #171b21; border-top: 1px solid #3a4250; }
 [data-theme="dark"] #chat-input { background-color: #1f242d; border: 1px solid #3a4250; color: white; }
+
+/*flexibilty for various devices*/
+@media screen and (max-width: 768px) {
+   
+    .shop-section {
+        flex-direction: column; 
+        align-items: center;
+    }
+    
+    .box {
+        width: 90%; 
+        margin-top: 20px;
+        height: auto; 
+    }
+
+    .bg-img {
+        background-position: center; 
+    }
+
+   
+    .navbar {
+        flex-wrap: wrap; 
+        height: auto;
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    
+    .nav-search {
+        width: 90%; 
+        order: 3; 
+    }
+
+   
+    .nav-address, .lang-section, .order-section {
+        display: none; 
+    }
+
+   
+    .panel {
+        height: auto;
+        padding: 10px;
+        justify-content: space-between;
+    }
+    
+   
+    .panel-ops {
+        display: none; 
+    }
+    
+    .deals-section {
+        font-size: 0.85rem;
+    }
+}
