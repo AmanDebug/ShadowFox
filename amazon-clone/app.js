@@ -63,14 +63,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     
-    // 2. NAVBAR LOGIN DIALOG LOGIC (FIXED)
+    
 
     const loginModal = document.getElementById('login-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const navbarItems = document.querySelectorAll('.navbar .border');
 
     navbarItems.forEach(item => {
-        // FIX: Exclude the cart section AND any element related to the search bar
         if (!item.classList.contains('cart-section') && 
             !item.classList.contains('nav-search') && 
             !item.closest('.nav-search')) {
@@ -95,7 +94,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     
-    // 3. SIDE CART DRAWER LOGIC
     
     const cartSection = document.querySelector('.cart-section');
     const cartDrawer = document.getElementById('cart-drawer');
@@ -131,7 +129,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     
-    // 4. TARGETED FOOTER LINKS LOGIC
     
     const targetedFooterLinks = document.querySelectorAll('.foot-panel2 ul:nth-child(3) a, .foot-panel2 ul:nth-child(4) a');
 
@@ -146,7 +143,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
 
-    // 5. BACK TO TOP SMOOTH SCROLL
     
     const backToTopBtn = document.getElementById('back-to-top');
 
@@ -161,7 +157,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
     
-    // 6. DARK MODE TOGGLE LOGIC
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     
     if (darkModeToggle) {
@@ -180,7 +175,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-    // 8. DYNAMIC AUTOCOMPLETE SEARCH SUGGESTIONS
     const searchInput = document.getElementById('main-search');
     const suggestionsBox = document.getElementById('search-suggestions');
 
@@ -244,7 +238,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
 
-    // 9. UNRESTRICTED SEARCH EXECUTION
     
     const searchIcon = document.querySelector('.search-icon');
 
@@ -270,7 +263,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // 10. AI CHATBOT INTERFACE & BACKEND PROXY
     
     const chatBubble = document.getElementById('chat-bubble');
     const chatWindow = document.getElementById('chat-window');
@@ -279,7 +271,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
 
-    // Toggle Opening Chat Window
     if (chatBubble && chatWindow) {
         chatBubble.addEventListener('click', () => {
             chatBubble.classList.add('hidden');
@@ -288,7 +279,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Toggle Closing Chat Window
     if (closeChatBtn && chatBubble && chatWindow) {
         closeChatBtn.addEventListener('click', () => {
             chatWindow.classList.add('hidden');
@@ -296,7 +286,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Appends a new chat message bubble into the scrollable UI area
     function appendMessage(text, sender) {
         if (!chatMessages) return null;
         const msgDiv = document.createElement('div');
@@ -304,14 +293,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
         msgDiv.textContent = text;
         chatMessages.appendChild(msgDiv);
         
-        // Auto-scroll instantly to the bottom of the chat view
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return msgDiv; // Return element reference to modify it later if needed
     }
 
-    // Connects securely to your Node.js backend proxy
     async function fetchGeminiResponse(userPrompt) {
-        // NOTE: Change this URL to your live URL (e.g., https://your-app.onrender.com/api/chat) once deployed!
         const backendUrl = "https://shadowfox-c198.onrender.com/api/chat"; 
 
         try {
@@ -333,29 +319,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    // Orchestrates input sending, interface mapping, and processing states
     async function handleSending() {
         if (!chatInput) return;
         const userText = chatInput.value.trim();
         if (userText === '') return;
 
-        // 1. Post user message bubble
         appendMessage(userText, 'user');
         chatInput.value = ''; // Reset input field immediately
 
-        // 2. Post animated placeholder thinking bubble
         const thinkingBubble = appendMessage("Thinking...", "ai");
 
-        // 3. Request answer from proxy backend
         const aiResponse = await fetchGeminiResponse(userText);
         
-        // 4. Update the thinking bubble with real text context
         if (thinkingBubble) {
             thinkingBubble.textContent = aiResponse;
         }
     }
 
-    // Listeners for click triggers and enter key actions
     if (sendChatBtn && chatInput) {
         sendChatBtn.addEventListener('click', handleSending);
         chatInput.addEventListener('keydown', (e) => {
