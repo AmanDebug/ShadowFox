@@ -562,10 +562,12 @@ footer {
 .foot-panel2 {
     background-color: var(--footer-bg);  
     color: var(--footer-text);            
-    height: 300px;
+    min-height: 350px;
+    height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
+    padding: 30px 0;
     transition: background-color 0.3s, color 0.3s;
 }
 
