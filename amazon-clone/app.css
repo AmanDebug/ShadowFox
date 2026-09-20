@@ -564,6 +564,7 @@ footer {
     color: var(--footer-text);            
     height: 300px;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -957,56 +958,113 @@ ul p {
 [data-theme="dark"] .chat-input-area { background-color: #171b21; border-top: 1px solid #3a4250; }
 [data-theme="dark"] #chat-input { background-color: #1f242d; border: 1px solid #3a4250; color: white; }
 
-/*flexibilty for various devices*/
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 @media screen and (max-width: 768px) {
-   
-    .shop-section {
-        flex-direction: column; 
-        align-items: center;
+    /* 1. Prevent page-level horizontal overflow */
+    body {
+        position: relative;
     }
-    
+
+    /* 2. Fix Navbar alignment & spacing */
+    .navbar {
+        height: auto;
+        padding: 8px 10px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .nav-logo {
+        width: 90px;
+        height: 35px;
+    }
+
+    .logo {
+        height: 35px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .nav-search {
+        width: 100%;
+        order: 4;
+        margin-top: 8px;
+    }
+
+    .nav-address, 
+    .lang-section, 
+    .order-section {
+        display: none !important;
+    }
+
+    .acc-section, .cart-section {
+        font-size: 0.85rem;
+    }
+
+    /* 3. Fix Sub-header Panel */
+    .panel {
+        height: auto;
+        padding: 8px 12px;
+        justify-content: space-between;
+    }
+
+    .panel-ops {
+        display: none !important;
+    }
+
+    /* 4. Fix Hero Banner Height */
+    .hero-section {
+        height: 230px;
+    }
+
+    .slide-btn {
+        width: 40px;
+        font-size: 1.8rem;
+    }
+
+    /* 5. Fix Product Cards */
+    .shop-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
     .box {
-        width: 90%; 
-        margin-top: 20px;
-        height: auto; 
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 15px;
     }
 
     .bg-img {
-        background-position: center; 
+        height: 240px;
+        background-position: center;
     }
 
-   
-    .navbar {
-        flex-wrap: wrap; 
-        height: auto;
-        padding: 10px 0;
+    /* 6. Fix Footer (stops the horizontal stretching) */
+    .foot-panel2 {
+        height: auto !important;
+        flex-direction: column;
+        padding: 20px 25px;
+        gap: 20px;
+    }
+
+    .foot-panel2 ul {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .last {
+        flex-wrap: wrap;
         gap: 10px;
+        padding-top: 15px;
     }
 
-    
-    .nav-search {
-        width: 90%; 
-        order: 3; 
-    }
-
-   
-    .nav-address, .lang-section, .order-section {
-        display: none; 
-    }
-
-   
-    .panel {
+    .foot-panel4 {
         height: auto;
-        padding: 10px;
-        justify-content: space-between;
-    }
-    
-   
-    .panel-ops {
-        display: none; 
-    }
-    
-    .deals-section {
-        font-size: 0.85rem;
+        padding-bottom: 20px;
     }
 }
